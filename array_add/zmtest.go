@@ -9,6 +9,11 @@ import (
 	"time"
 )
 
+//func fAdd(a, b *big.Int) *big.Int {
+//	ab := new(big.Int).Add(a, b)
+//	return ab.Mod(ab, R)
+//}
+
 func main() {
 
 	// p(x) = x^3 + x + 5
@@ -25,7 +30,7 @@ func main() {
 
 	//定义p2是一个大整数类型的数组，含有3个元素
 	//并给该数组随机赋值
-	var p2 [3]*big.Int
+	var p2 [4]*big.Int
 	rand.Seed(time.Now().UnixNano()) // 取纳秒时间戳，可以保证每次的随机数种子都不同
 	for i := 0; i < 3; i++ {
 		a := rand.Intn(10) // Intn(n)返回一个取值范围在[0,n)的伪随机int值
@@ -48,5 +53,16 @@ func main() {
 
 	}
 	fmt.Println("p3 = ", p3)
+
+	//数据元素求和
+
+	var b = big.NewInt(0)
+	res2 := new(big.Int)
+	for i := 0; i < 3; i++ {
+
+		b = res2.Add(b, p3[i])
+
+	}
+	fmt.Println("sum=", b)
 
 }
